@@ -486,24 +486,54 @@
       <div class="hero-body">
         <div class="container">
           <h2 class="title is-3 has-text-centered">Video Results</h2>
-          <div class="columns is-multiline is-variable is-6">
-            <div class="column is-12-mobile is-4-desktop has-text-centered">
-              <video autoplay controls muted loop playsinline preload="metadata" style="width: 100%;">
-                <source src="static/videos/fruit_first_with_task.mp4" type="video/mp4">
-              </video>
-              <p class="mt-2">Fruit First with Task</p>
+          <div id="video-results-carousel" class="carousel results-carousel video-results-carousel">
+            <!-- Page 1: Tasks Performed by PlanFlow-DP -->
+            <div class="carousel-page item">
+              <h2 class="title is-5 has-text-centered carousel-page-title">Tasks Performed by PlanFlow-DP</h2>
+              <div class="carousel-page-content">
+                <div class="video-item has-text-centered">
+                  <video autoplay controls muted loop playsinline preload="metadata">
+                    <source src="static/videos/fruit_first_with_task.mp4" type="video/mp4">
+                  </video>
+                  <p class="mt-2">Sort Table</p>
+                </div>
+                <div class="video-item has-text-centered">
+                  <video autoplay controls muted loop playsinline preload="metadata">
+                    <source src="static/videos/garbage_with_task.mp4" type="video/mp4">
+                  </video>
+                  <p class="mt-2">Sort Table Reverse</p>
+                </div>
+                <div class="video-item has-text-centered">
+                  <video autoplay controls muted loop playsinline preload="metadata">
+                    <source src="static/videos/pull_tool_with_task.mp4" type="video/mp4">
+                  </video>
+                  <p class="mt-2">Tool Usage & Pick Cube</p>
+                </div>
+              </div>
             </div>
-            <div class="column is-12-mobile is-4-desktop has-text-centered">
-              <video autoplay controls muted loop playsinline preload="metadata" style="width: 100%;">
-                <source src="static/videos/garbage_with_task.mp4" type="video/mp4">
-              </video>
-              <p class="mt-2">Garbage with Task</p>
-            </div>
-            <div class="column is-12-mobile is-4-desktop has-text-centered">
-              <video autoplay controls muted loop playsinline preload="metadata" style="width: 100%;">
-                <source src="static/videos/pull_tool_with_task.mp4" type="video/mp4">
-              </video>
-              <p class="mt-2">Pull Tool with Task</p>
+            <!-- Page 2: Comparison on Sort Table Reverse -->
+            <div class="carousel-page item">
+              <h2 class="title is-5 has-text-centered carousel-page-title">Comparison on Sort Table Reverse</h2>
+              <div class="carousel-page-content">
+                <div class="video-item has-text-centered">
+                  <video autoplay controls muted loop playsinline preload="metadata">
+                    <source src="static/videos/dp_fail.mp4" type="video/mp4">
+                  </video>
+                  <p class="mt-2">Diffusion Policy</p>
+                </div>
+                <div class="video-item has-text-centered">
+                  <video autoplay controls muted loop playsinline preload="metadata">
+                    <source src="static/videos/pi0_fail.mp4" type="video/mp4">
+                  </video>
+                  <p class="mt-2">π<sub>0</sub></p>
+                </div>
+                <div class="video-item has-text-centered">
+                  <video autoplay controls muted loop playsinline preload="metadata">
+                    <source src="static/videos/garbage_with_task.mp4" type="video/mp4">
+                  </video>
+                  <p class="mt-2">PlanFlow-DP</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
