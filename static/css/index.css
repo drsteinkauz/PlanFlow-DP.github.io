@@ -269,6 +269,8 @@ body {
 
 .carousel-page-title {
   margin-bottom: 1.5rem;
+  text-align: center;
+  width: 100%;
 }
 
 .carousel-page-content {
@@ -799,6 +801,3 @@ a:focus {
     box-shadow: none !important;
   }
 }
-
-
-

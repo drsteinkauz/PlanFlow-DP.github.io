@@ -191,7 +191,7 @@
     <i class="fas fa-chevron-up"></i>
   </button>
 
-  <!-- More Works Dropdown -->
+  <!-- More Works Dropdown (disabled)
   <div class="more-works-container">
     <button class="more-works-btn" onclick="toggleMoreWorks()" title="View More Works from Our Lab">
       <i class="fas fa-flask"></i>
@@ -206,19 +206,14 @@
         </button>
       </div>
       <div class="works-list">
-        <!-- TODO: Replace with your lab's related works -->
         <a href="https://arxiv.org/abs/PAPER_ID_1" class="work-item" target="_blank">
           <div class="work-info">
-            <!-- TODO: Replace with actual paper title -->
             <h5>Paper Title 1</h5>
-            <!-- TODO: Replace with brief description -->
             <p>Brief description of the work and its main contribution.</p>
-            <!-- TODO: Replace with venue and year -->
             <span class="work-venue">Conference/Journal 2024</span>
           </div>
           <i class="fas fa-external-link-alt"></i>
         </a>
-        <!-- TODO: Add more related works or remove extra items -->
         <a href="https://arxiv.org/abs/PAPER_ID_2" class="work-item" target="_blank">
           <div class="work-info">
             <h5>Paper Title 2</h5>
@@ -238,6 +233,7 @@
       </div>
     </div>
   </div>
+  End More Works Dropdown (disabled) -->
 
   <main id="main-content">
     <section class="hero">
@@ -271,7 +267,7 @@
 
               <div class="is-size-5 publication-authors">
                 <!-- TODO: Replace with your institution and conference/journal info -->
-                <span class="author-block">University of Michigan<br>DeepRob Winter 2026</span>
+                <span class="author-block">University of Michigan<br>DeepRob WN 2026</span>
                 <!-- TODO: Remove this line if no equal contribution -->
                 <!-- <span class="eql-cntrb"><small><br><sup>*</sup>Indicates Equal Contribution</small></span> -->
               </div>
@@ -330,17 +326,13 @@
       </div>
     </section>
 
-
-    <!-- Teaser video-->
+    <!-- Teaser video (disabled)
     <section class="hero teaser">
       <div class="container is-max-desktop">
         <div class="hero-body">
-          <!-- TODO: Replace with your teaser video -->
           <video poster="" id="tree" autoplay controls muted loop height="100%" preload="metadata">
-            <!-- TODO: Add your video file path here -->
             <source src="static/videos/banner_video.mp4" type="video/mp4">
           </video>
-          <!-- TODO: Replace with your video description -->
           <h2 class="subtitle has-text-centered">
             Aliquam vitae elit ullamcorper tellus egestas pellentesque. Ut lacus tellus, maximus vel lectus at, placerat
             pretium mi. Maecenas dignissim tincidunt vestibulum. Sed consequat hendrerit nisl ut maximus.
@@ -348,7 +340,7 @@
         </div>
       </div>
     </section>
-    <!-- End teaser video -->
+    End teaser video (disabled) -->
 
     <!-- Paper abstract -->
     <section class="section hero is-light">
@@ -362,7 +354,8 @@
                 Long-horizon robotic manipulation remains challenging because policies must generate accurate low-level
                 actions while completing multiple sub-goals in the correct order. We propose PlanFlow-DP, a stage-aware
                 language-conditioned diffusion policy that uses a pretrained multimodal large language model to infer
-                the current task stage from visual observations and convert it into explicit language guidance for action
+                the current task stage from visual observations and convert it into explicit language guidance for
+                action
                 conditioning. This stage-aware language signal is fused with visual features and robot state in a
                 diffusion-based action predictor. In ManiSkill experiments on Sort Table, Sort Table Reverse, and Tool
                 Usage and Pick Cube, PlanFlow-DP outperforms Diffusion Policy and pi_0, achieving better language
@@ -375,15 +368,54 @@
     </section>
     <!-- End paper abstract -->
 
+    <!-- Introduction -->
+    <section class="section">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-four-fifths">
+            <h2 class="title is-3">Introduction</h2>
+            <div class="content has-text-justified">
+              <ul>
+                <li>Long-horizon manipulation is difficult because policies must maintain both accurate low-level
+                  control and correct high-level ordering across multiple sub-goals.</li>
+                <li>Diffusion policies generate strong continuous actions, but implicit planning often leads to stage
+                  transition errors and compounding failures in multi-stage tasks.</li>
+                <li>LLMs provide strong stage-level reasoning, yet they do not directly output robot actions;
+                  PlanFlow-DP
+                  bridges this gap with an explicit plan-then-act pipeline.</li>
+                <li>We propose PlanFlow-DP which integrates language-guided action generation in diffusion models,
+                  successfully improving language following and long-horizon reliability.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- End Introduction -->
+
     <!-- Methodology -->
     <section class="section">
       <div class="container is-max-desktop">
         <div class="columns is-centered has-text-centered">
           <div class="column is-four-fifths">
             <h2 class="title is-3">Methodology</h2>
+            <div class="content has-text-justified">
+              <p>
+                PlanFlow-DP adopts a hierarchical plan-then-act framework for long-horizon manipulation. A stage-aware
+                planner (GPT-4o) first infers the current task stage from the RGB observation, global instruction, and
+                predefined stage decomposition, then maps the predicted stage to a stage-level language instruction.
+                This instruction is encoded together with visual history and robot state to form multimodal condition
+                tokens for a stage-conditioned Diffusion Transformer (DiT) action expert. The DiT denoises future
+                action chunks through self-attention on action tokens and cross-attention to condition tokens, enabling
+                explicit stage reasoning and high-quality continuous control in a closed-loop receding-horizon pipeline.
+              </p>
+            </div>
             <figure>
               <img src="static/images/planflowdp_framework.png" alt="PlanFlow-DP methodology framework"
                 loading="lazy" />
+              <figcaption class="has-text-centered is-size-6 mt-3">
+                Figure 1. Overview of PlanFlow-DP pipeline.
+              </figcaption>
             </figure>
           </div>
         </div>
@@ -391,18 +423,39 @@
     </section>
     <!-- End methodology -->
 
-    <!-- Experiment and Result -->
+    <!-- Result -->
     <section class="section">
       <div class="container is-max-desktop">
         <div class="columns is-centered has-text-centered">
           <div class="column is-four-fifths">
-            <h2 class="title is-3">Experiment and Result</h2>
+            <h2 class="title is-3">Results</h2>
+            <div class="content has-text-justified">
+              <p>
+                We evaluate the proposed method on three ManiSkill-based long-horizon tasks: Sort Table, Sort
+                Table Reverse, and Tool Usage & Pick Cube. These tasks require long-horizon planning, stage transition
+                awareness, and precise low-level control under varying object layouts, which serve as strong
+                benchmarks to test long-horizon manipulation ability.
+              </p>
+            </div>
             <figure>
               <img src="static/images/planflowdp_tasks.png" alt="PlanFlow-DP experiment tasks" loading="lazy" />
+              <figcaption class="has-text-centered is-size-6 mt-3">
+                Figure 2. Tasks Performed by PlanFlow-DP.
+              </figcaption>
             </figure>
             <br />
+            <div class="content has-text-justified">
+              <p>
+                Figure 3 shows qualitative comparisons on three different tasks. PlanFlow-DP consistently outperforms
+                Diffusion Policy and π<sub>0</sub>,
+                demonstrating stronger language following and improved long-horizon reliability.
+              </p>
+            </div>
             <figure>
               <img src="static/images/planflowdp_result.png" alt="PlanFlow-DP experiment results" loading="lazy" />
+              <figcaption class="has-text-centered is-size-6 mt-3">
+                Figure 3. Comparison on Sort Table Reverse.
+              </figcaption>
             </figure>
           </div>
         </div>
@@ -413,43 +466,43 @@
 
     <!-- Image carousel (temporarily disabled) -->
     <template id="disabled-image-carousel">
-    <section class="hero is-small">
-      <div class="hero-body">
-        <div class="container">
-          <div id="results-carousel" class="carousel results-carousel">
-            <div class="item">
-              <!-- TODO: Replace with your research result images -->
-              <img src="static/images/carousel1.jpg" alt="First research result visualization" loading="lazy" />
-              <!-- TODO: Replace with description of this result -->
-              <h2 class="subtitle has-text-centered">
-                First image description.
-              </h2>
-            </div>
-            <div class="item">
-              <!-- Your image here -->
-              <img src="static/images/carousel2.jpg" alt="Second research result visualization" loading="lazy" />
-              <h2 class="subtitle has-text-centered">
-                Second image description.
-              </h2>
-            </div>
-            <div class="item">
-              <!-- Your image here -->
-              <img src="static/images/carousel3.jpg" alt="Third research result visualization" loading="lazy" />
-              <h2 class="subtitle has-text-centered">
-                Third image description.
-              </h2>
-            </div>
-            <div class="item">
-              <!-- Your image here -->
-              <img src="static/images/carousel4.jpg" alt="Fourth research result visualization" loading="lazy" />
-              <h2 class="subtitle has-text-centered">
-                Fourth image description.
-              </h2>
+      <section class="hero is-small">
+        <div class="hero-body">
+          <div class="container">
+            <div id="results-carousel" class="carousel results-carousel">
+              <div class="item">
+                <!-- TODO: Replace with your research result images -->
+                <img src="static/images/carousel1.jpg" alt="First research result visualization" loading="lazy" />
+                <!-- TODO: Replace with description of this result -->
+                <h2 class="subtitle has-text-centered">
+                  First image description.
+                </h2>
+              </div>
+              <div class="item">
+                <!-- Your image here -->
+                <img src="static/images/carousel2.jpg" alt="Second research result visualization" loading="lazy" />
+                <h2 class="subtitle has-text-centered">
+                  Second image description.
+                </h2>
+              </div>
+              <div class="item">
+                <!-- Your image here -->
+                <img src="static/images/carousel3.jpg" alt="Third research result visualization" loading="lazy" />
+                <h2 class="subtitle has-text-centered">
+                  Third image description.
+                </h2>
+              </div>
+              <div class="item">
+                <!-- Your image here -->
+                <img src="static/images/carousel4.jpg" alt="Fourth research result visualization" loading="lazy" />
+                <h2 class="subtitle has-text-centered">
+                  Fourth image description.
+                </h2>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
     </template>
     <!-- End image carousel -->
 
@@ -458,24 +511,24 @@
 
     <!-- Youtube video (temporarily disabled) -->
     <template id="disabled-youtube-video">
-    <section class="hero is-small is-light">
-      <div class="hero-body">
-        <div class="container">
-          <!-- Paper video. -->
-          <h2 class="title is-3">Video Presentation</h2>
-          <div class="columns is-centered has-text-centered">
-            <div class="column is-four-fifths">
+      <section class="hero is-small is-light">
+        <div class="hero-body">
+          <div class="container">
+            <!-- Paper video. -->
+            <h2 class="title is-3">Video Presentation</h2>
+            <div class="columns is-centered has-text-centered">
+              <div class="column is-four-fifths">
 
-              <div class="publication-video">
-                <!-- TODO: Replace with your YouTube video ID -->
-                <iframe src="https://www.youtube.com/embed/JkaxUblCGz0" frameborder="0"
-                  allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                <div class="publication-video">
+                  <!-- TODO: Replace with your YouTube video ID -->
+                  <iframe src="https://www.youtube.com/embed/JkaxUblCGz0" frameborder="0"
+                    allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
     </template>
     <!-- End youtube video -->
 
@@ -485,7 +538,7 @@
     <section class="hero is-small">
       <div class="hero-body">
         <div class="container">
-          <h2 class="title is-3 has-text-centered">Video Results</h2>
+          <h2 class="title is-3 has-text-centered">Demos</h2>
           <div id="video-results-carousel" class="carousel results-carousel video-results-carousel">
             <!-- Page 1: Tasks Performed by PlanFlow-DP -->
             <div class="carousel-page item">
@@ -542,6 +595,52 @@
     <!-- </template> -->
     <!-- End video carousel -->
 
+    <!-- Conclusion -->
+    <section class="section">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-four-fifths">
+            <h2 class="title is-3">Conclusion</h2>
+            <div class="content has-text-justified">
+              <p>
+                PlanFlow-DP combines explicit LLM-based stage reasoning with diffusion-based action generation for
+                long-horizon manipulation, achieving higher success than Diffusion Policy and π<sub>0</sub> on Sort
+                Table, Sort Table Reverse, and Tool Usage and Pick Cube. Key limitations include dependence on external
+                stage prediction, predefined task decomposition, and simulation-only evaluation. Future work will
+                improve planner reliability, generalization, and real-time deployment efficiency.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- End conclusion -->
+
+    <!-- Acknowledgements -->
+    <section class="section">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-four-fifths">
+            <h2 class="title is-3">Acknowledgements</h2>
+            <div class="content has-text-justified">
+              <p>
+                We would like to thank Prof. Xiaoxiao Du, Prof. Yulun Tian and GSIs for their inspiring lectures,
+                helpful instruction, and support during the semester and throughout this project.
+              </p>
+              <p>
+                We thank all team members for their contributions to this project. Changhe Chen led the pipeline
+                integration and end-to-end training of PlanFlow-DP. Chi Zhang contributed to data collection and the
+                simulation environment setup. Pengchen Chen worked on baseline implementation and failure case analysis.
+                Yifan Chou contributed to the literature review, experiments, and evaluation. We sincerely appreciate
+                everyone's effort and collaboration throughout the development, experimentation, and presentation of
+                this work.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- End acknowledgements -->
 
 
 
@@ -551,10 +650,10 @@
     <section class="hero is-small is-light">
       <div class="hero-body">
         <div class="container">
-          <h2 class="title">Poster</h2>
+          <h2 class="title is-3 has-text-centered">Poster</h2>
 
           <!-- TODO: Replace with your poster PDF -->
-          <iframe src="static/pdfs/sample.pdf" width="100%" height="550">
+          <iframe src="static/pdfs/poster_planflowdp_final_v1.2.pdf" width="100%" height="550">
           </iframe>
 
         </div>
