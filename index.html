@@ -416,6 +416,21 @@
                 Figure 1. Overview of PlanFlow-DP pipeline.
               </figcaption>
             </figure>
+            <figure class="mt-5">
+              <img src="static/images/planflowdp_planner.png"
+                alt="Stage-aware planner prompt, stage prediction, and instruction parsing" loading="lazy" />
+              <figcaption class="has-text-centered is-size-6 mt-3">
+                Figure 2. Stage-aware planner structure.
+              </figcaption>
+            </figure>
+            <div class="content has-text-justified mt-4">
+              <p>
+                The planner converts visual observations and the meta task into a compact stage query. GPT-4o predicts
+                the current stage number from the predefined decomposition, and a stage parser maps that answer to the
+                corresponding language instruction, such as moving toward the target object. This explicit intermediate
+                stage representation gives the diffusion policy a task-relevant instruction at each control step.
+              </p>
+            </div>
           </div>
         </div>
       </div>
@@ -439,13 +454,13 @@
             <figure>
               <img src="static/images/planflowdp_tasks.png" alt="PlanFlow-DP experiment tasks" loading="lazy" />
               <figcaption class="has-text-centered is-size-6 mt-3">
-                Figure 2. Tasks Performed by PlanFlow-DP.
+                Figure 3. Tasks Performed by PlanFlow-DP.
               </figcaption>
             </figure>
             <br />
             <div class="content has-text-justified">
               <p>
-                Figure 3 shows qualitative comparisons on three different tasks. PlanFlow-DP consistently outperforms
+                Figure 4 shows qualitative comparisons on three different tasks. PlanFlow-DP consistently outperforms
                 Diffusion Policy and π<sub>0</sub>,
                 demonstrating stronger language following and improved long-horizon reliability.
               </p>
@@ -453,7 +468,7 @@
             <figure>
               <img src="static/images/planflowdp_result.png" alt="PlanFlow-DP experiment results" loading="lazy" />
               <figcaption class="has-text-centered is-size-6 mt-3">
-                Figure 3. Comparison on Sort Table Reverse.
+                Figure 4. Comparison on Sort Table Reverse.
               </figcaption>
             </figure>
           </div>
